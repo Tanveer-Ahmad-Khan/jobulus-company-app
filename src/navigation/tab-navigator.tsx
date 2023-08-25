@@ -3,9 +3,13 @@ import type { RouteProp } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as React from 'react';
 
-import { Settings } from '@/screens';
+import { AddPost, Candidates, Home, Settings, Vacancies } from '@/screens';
 
 type TabParamList = {
+  Home: undefined;
+  Vacancies: undefined;
+  AddPost: undefined;
+  Candidates: undefined;
   Settings: undefined;
 };
 
@@ -24,12 +28,39 @@ export const TabNavigator = () => {
           headerShown: false,
         }}
       >
-        r
+        <Tab.Screen
+          name={'Home'}
+          component={Home}
+          options={{
+            title: 'Home',
+          }}
+        />
+        <Tab.Screen
+          name={'Vacancies'}
+          component={Vacancies}
+          options={{
+            title: 'Vacancies',
+          }}
+        />
+        <Tab.Screen
+          name={'AddPost'}
+          component={AddPost}
+          options={{
+            title: 'Post A Job',
+          }}
+        />
+        <Tab.Screen
+          name={'Candidates'}
+          component={Candidates}
+          options={{
+            title: 'Candidates',
+          }}
+        />
         <Tab.Screen
           name={'Settings'}
           component={Settings}
           options={{
-            title: 'Setting',
+            title: 'More',
           }}
         />
       </Tab.Group>
