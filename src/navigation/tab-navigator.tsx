@@ -5,6 +5,8 @@ import * as React from 'react';
 
 import { AddPost, Candidates, Home, Settings, Vacancies } from '@/screens';
 
+import { AppBottomTab } from './bottom-tab';
+
 type TabParamList = {
   Home: undefined;
   Vacancies: undefined;
@@ -22,7 +24,14 @@ export type TabList<T extends keyof TabParamList> = {
 
 export const TabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      initialRouteName="Home"
+      tabBar={(props) => <AppBottomTab {...props} />}
+      screenOptions={{
+        headerShown: false, // Set this to false to hide the headers
+        tabBarHideOnKeyboard: true,
+      }}
+    >
       <Tab.Group
         screenOptions={{
           headerShown: false,
