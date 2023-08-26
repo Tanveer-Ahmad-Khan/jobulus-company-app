@@ -5,9 +5,27 @@ import { create } from 'zustand';
 interface AuthState {
   token: string | null;
   status: 'signOut' | 'signIn';
+  login: () => void;
+  logOut: () => void;
 }
 
-export const useAuth = create<AuthState>(() => ({
+export const useAuth = create<AuthState>((set) => ({
   status: 'signOut',
   token: null,
+  login: () => {
+    set({ status: 'signIn' });
+  },
+  logOut: () => {
+    set({ status: 'signOut' });
+  },
 }));
+
+// login
+export const login = () => {
+  return useAuth.getState().login();
+};
+
+// login
+export const logOut = () => {
+  return useAuth.getState().logOut();
+};
